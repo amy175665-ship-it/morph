@@ -1,0 +1,148 @@
+@use './variables' as *;
+@use './reset';
+
+body {
+  color: $color-text;
+  background: $color-background;
+  font-family: 'Inter', 'Pretendard', Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  // 페이지의 스크롤바 유무가 바뀌어도 고정 헤더의 가로 위치를 유지합니다.
+  scrollbar-gutter: stable;
+}
+a { color: inherit; text-decoration: none; }
+button { color: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid $color-accent; outline-offset: 6px; }
+::selection { background: $color-accent; color: white; }
+
+.site-header-space {
+  height: 92px;
+  background: inherit;
+}
+
+.site-header {
+  height: 60px;
+  padding: 0 2.9%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  transition: background-color 0.3s ease;
+  z-index: 1000;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+.site-header--hero { background: transparent; }
+.wordmark { font-size: 25px; letter-spacing: 7px; }
+.site-header a:not(.wordmark):hover { opacity: .55; }
+.site-header .wordmark:hover .wordmark__accent,
+.site-header .wordmark:focus-visible .wordmark__accent { color: $color-accent; }
+.site-header .wordmark { display: inline-flex; position: relative; justify-self: center; gap: 7px; letter-spacing: 0; }
+// Keep the hover area stable while the letters fall below their original position.
+.site-header .wordmark::after { content: ''; position: absolute; inset: 0 -8px -34px; }
+.wordmark__letter {
+  display: inline-block;
+  transform-origin: center bottom;
+  transition: color .2s;
+}
+.header-menu-toggle {
+  justify-self: start;
+  padding: 12px 0;
+  min-height: 44px;
+  background: none;
+  border: 0;
+  font-size: inherit;
+  letter-spacing: inherit;
+}
+.header-cart { justify-self: end; padding-block: 12px; white-space: nowrap; }
+.header-menu-close { display: block; font-size: 30px; line-height: 1; font-weight: 300; }
+.site-header > .header-menu-toggle,
+.site-header > .wordmark,
+.site-header > .header-cart { position: relative; z-index: 1; }
+.header-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: clamp(360px, 26vw, 500px);
+  height: 100dvh;
+  padding: 110px clamp(45px, 3vw, 60px) 32px;
+  background: #fff;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  visibility: hidden;
+  transform: translateX(-100%);
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.header-menu::before {
+  content: '';
+  position: absolute;
+  top: 59px;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, .12);
+  pointer-events: none;
+}
+.header-menu__nav { display: grid; gap: 21px; margin-top: 15px; }
+.header-menu__nav a {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  width: fit-content;
+  max-width: 100%;
+  font-size: clamp(1.4rem, 1.7vw, 2rem);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -.025em;
+}
+.header-menu__index { flex-shrink: 0; font-size: 10px; letter-spacing: 1px; opacity: .75; }
+.header-menu__nav a > span:last-child { transition: transform .2s ease; }
+.header-menu__bottom { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; margin-top: auto; font-size: 10px; line-height: 1.8; }
+.header-menu__bottom p { margin: 0; }
+.header-menu__bottom > div:first-child > p { margin-bottom: 14px; }
+.header-menu__bottom > div:first-child > a { display: block; margin-top: 4px; }
+.header-menu__location { text-align: left; }
+.header-menu__search { min-width: 0; padding-top: 12px; border-top: 1px solid rgba(0, 0, 0, .12); }
+.header-menu__search > button { background: none; border: 0; padding: 10px 0; min-height: 44px; font-size: inherit; letter-spacing: inherit; }
+.search-panel { margin-top: 20px; }
+.search-panel input { min-width: 0; width: 100%; padding: 10px 0; border: 0; border-bottom: 1px solid; background: transparent; }
+.search-results { max-height: 180px; overflow-y: auto; display: grid; gap: 16px; padding: 16px 6px; }
+.search-results a { display: flex; align-items: center; min-height: 44px; overflow-wrap: anywhere; }
+.search-panel #search-status { margin-top: 12px; }
+.header-menu__nav a { min-height: 44px; align-items: center; }
+.header-menu__nav a[aria-current='page'] > span:last-child { text-decoration: underline; text-underline-offset: 6px; }
+main[tabindex='-1']:focus, main h1[tabindex='-1']:focus { outline: none; }
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .header-menu__nav a:hover > span:last-child { transform: translateX(12px); }
+}
+@media (max-width: 900px) {
+  .site-header-space { height: 76px; }
+  .site-header { height: 76px; padding-inline: 5%; }
+  .header-menu { width: 50vw; padding: 126px 28px 32px; }
+  .header-menu::before { top: 75px; }
+  .header-menu__nav a { font-size: 24px; }
+}
+@media (max-width: 540px) {
+  .wordmark { font-size: 20px; letter-spacing: 5px; }
+  .site-header { font-size: 10px; letter-spacing: 1px; }
+  .site-header .wordmark { gap: 3px; }
+  .header-menu { width: 100%; padding: 104px 5% 32px; gap: 36px; }
+  .header-menu__nav { gap: 13px; }
+  .header-menu__nav a { font-size: clamp(24px, 6vw, 30px); }
+  .search-panel input { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .wordmark__letter, .site-header, .header-menu__nav a > span:last-child { transition: none; }
+}

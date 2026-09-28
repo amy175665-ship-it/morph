@@ -1,0 +1,29 @@
+﻿@use '../../styles/variables' as *;
+
+.journal-detail-page { background: #fff; min-height: 100vh; }
+.journal-detail {
+  padding: 48px 5% 80px;
+  &__heading { max-width: 1000px; }
+  h1 { margin: 30px 0; font-size: clamp(36px, 6.5vw, 92px); font-weight: 400; line-height: 1.02; letter-spacing: -.045em; overflow-wrap: break-word; }
+  &__meta { font-size: 10px; letter-spacing: 2px; }
+  &__intro { max-width: 560px; margin: 32px 0 48px; font-size: 16px; line-height: 1.8; }
+  &__hero { aspect-ratio: 16 / 9; }
+  &__hero img { width: 100%; height: 100%; object-fit: cover; }
+  &__placeholder { height: 100%; padding: 24px; display: flex; align-items: flex-end; background: $color-trail-background; font-size: 10px; letter-spacing: 1px; }
+  &__body { max-width: 680px; margin: 80px auto; }
+  &__body section + section { margin-top: 60px; }
+  &__body h2 { font-size: 28px; font-weight: 400; letter-spacing: -.03em; }
+  &__body p { font-size: 16px; line-height: 1.9; }
+  &__body img { width: 100%; margin-top: 32px; }
+  &__navigation { display: flex; justify-content: space-between; gap: 40px; padding-top: 30px; border-top: 1px solid $color-text; font-size: 11px; letter-spacing: 1px; }
+  &__navigation a { padding-block: 12px; }
+  &__navigation span { display: block; margin-bottom: 16px; }
+  &__navigation strong { font-size: 18px; font-weight: 400; letter-spacing: -.02em; }
+  &__navigation a:hover { text-decoration: underline; }
+}
+@media (max-width: 600px) {
+  .journal-detail { padding-top: 24px; }
+  .journal-detail__hero { aspect-ratio: 4 / 3; }
+  .journal-detail__body { margin-block: 48px; }
+  .journal-detail__navigation { flex-direction: column; gap: 24px; }
+}

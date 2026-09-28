@@ -1,0 +1,10 @@
+.tmp/
+.tmp-browser-review/
+node_modules/
+dist/
+.git/
+src/assets/images/about/
+src/assets/images/collection/
+src/assets/images/cursor/
+src/assets/images/Journal/
+src/assets/images/products/

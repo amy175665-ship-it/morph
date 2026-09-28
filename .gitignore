@@ -1,0 +1,8 @@
+node_modules/
+dist/
+*.local
+
+# 임시 작업 결과와 브라우저 검증 프로필
+/.tmp/
+/.tmp-browser-review/
+.vercel

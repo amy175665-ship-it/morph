@@ -1,0 +1,62 @@
+﻿.liquid-cursor {
+  // Asset padding is included; the visible chrome shape is smaller than this box.
+  --blob-width: 76px;
+  --sphere-size: 40px;
+  --ring-size: 80px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  // Keep the custom pointer visible over the fixed header.
+  z-index: 1001;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform;
+
+  img { max-width: none; pointer-events: none; -webkit-user-drag: none; }
+  &__blob { position: absolute; width: 0; height: 0; }
+  &__blob img {
+    position: absolute;
+    width: var(--blob-width); 
+    height: calc(var(--blob-width) * 2 / 3);
+    left: calc(var(--blob-width) / -2);
+    top: calc(var(--blob-width) / -3);
+    object-fit: contain;
+    transform-origin: center;
+  }
+  &__sphere {
+    position: absolute;
+    width: var(--sphere-size);
+    height: var(--sphere-size);
+    left: calc(var(--sphere-size) / -2);
+    top: calc(var(--sphere-size) / -2);
+    object-fit: contain;
+    opacity: 0;
+    transform: scale(.7);
+  }
+  &__ring {
+    position: absolute;
+    width: var(--ring-size);
+    height: var(--ring-size);
+    left: calc(var(--ring-size) / -2);
+    top: calc(var(--ring-size) / -2);
+    border: 1px solid #111;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(.75);
+  }
+  &__ring span { position: absolute; top: calc(100% + 7px); left: 50%; transform: translateX(-50%); font-size: 12px; font-weight: 600; letter-spacing: 2px; color: #111; }
+}
+.liquid-cursor-particles { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 1002; }
+.liquid-cursor__particle { position: absolute; width: 40px; height: 40px; object-fit: contain; pointer-events: none; user-select: none; }
+
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  html.liquid-cursor-active,
+  html.liquid-cursor-active * { cursor: none !important; }
+}
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .liquid-cursor, .liquid-cursor-particles { display: none; }
+}

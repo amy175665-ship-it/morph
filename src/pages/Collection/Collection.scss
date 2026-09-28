@@ -1,0 +1,32 @@
+﻿@use '../../styles/variables' as *;
+
+.collection-page {
+  --collection-header-height: 60px;
+  background: $color-trail-background;
+
+  // Collection에서만 여백을 실제 헤더 높이에 맞춥니다.
+  .site-header-space { height: var(--collection-header-height); }
+}
+
+.collection {
+  position: relative;
+  height: calc(100vh - var(--collection-header-height));
+  height: calc(100dvh - var(--collection-header-height));
+  overflow: hidden;
+
+  &__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+
+  }
+  &__error { position: relative; display: grid; align-content: center; justify-items: center; gap: 20px; height: 100%; padding: 32px; text-align: center; font-size: 14px; line-height: 1.8; }
+  &__error a { display: inline-flex; align-items: center; min-height: 44px; font-size: 11px; text-decoration: underline; text-underline-offset: 5px; }
+}
+
+@media (max-width: 900px) {
+  .collection-page { --collection-header-height: 76px; }
+}

@@ -1,0 +1,27 @@
+﻿.image-trail {
+  position: relative;
+  isolation: isolate;
+  // Let the objects cross the hero edges and overlap adjacent sections.
+  overflow: visible;
+  z-index: 1;
+
+  &__layer {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+  }
+
+  &__image {
+    position: absolute;
+    width: clamp(160px, 19vw, 300px);
+    height: clamp(160px, 19vw, 300px);
+    object-fit: contain;
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 700px), (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .image-trail__layer { display: none; }
+}

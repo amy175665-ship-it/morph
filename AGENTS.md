@@ -273,7 +273,7 @@ SNB는 더 이상 풀스크린이나 데스크톱 반폭 메뉴가 아닙니다.
 - 커서 이미지는 정밀 포인터·hover·동작 줄이기 해제 조건에서만 요청합니다. 터치 기기에서 숨겨진 커서 이미지가 로드되지 않도록 유지합니다.
 - `.tmp/`, `.tmp-browser-review/`, node_modules/, dist/는 Git 제외 대상입니다. package-lock.json은 유지합니다.
 - `.vercel/` 연결 정보도 Git에서 제외합니다. Vercel 배포 시에는 .vercelignore로 임시 파일과 원본 이미지를 제외하고 optimized/ 이미지를 포함합니다.
-- 현재 배포 주소는 https://morph-pi-peach.vercel.app 입니다. vercel.json의 SPA rewrite를 유지하고 재배포 후 상세 URL 직접 접근·새로고침을 확인합니다. GitHub 저장소는 아직 연결하지 않았습니다.
+- 현재 배포 주소는 https://morph-pi-peach.vercel.app 입니다. vercel.json의 SPA rewrite를 유지하고 재배포 후 상세 URL 직접 접근·새로고침을 확인합니다.
 
 ## 11. 모션과 접근성
 
@@ -325,3 +325,5 @@ SNB는 더 이상 풀스크린이나 데스크톱 반폭 메뉴가 아닙니다.
 요청한 범위가 실제 파일에 반영되고, 관련 검증을 수행하고, 한계나 미확인 항목을 짧게 전달하면 완료입니다.
 
 최종 결과는 **시각적으로 정돈된 실험적 갤러리이면서, 학습자가 코드를 읽고 설명할 수 있는 프로젝트**여야 합니다.
+
+- Public GitHub source: https://github.com/amy175665-ship-it/morph (main). Vercel deployment currently uses the CLI.

@@ -1,6 +1,6 @@
 # MORPH
 
-**실행 화면: [MORPH Live](https://morph-pi-peach.vercel.app)**
+**[Live Demo](https://morph-pi-peach.vercel.app) | [GitHub Source](https://github.com/amy175665-ship-it/morph)**
 
 서울 기반의 가상 가구·오브제 편집숍을 표현한 개인 React 포트폴리오입니다. 브랜드 중심의 화면 구성과 사용자 입력에 따라 바뀌는 UI를 함께 구현했습니다.
 
@@ -102,7 +102,7 @@ src/
 - NEWEST는 출시일이 아닌 상품 ID 내림차순입니다.
 - 브랜드·상품 설명·기사·연락처는 포트폴리오용 가상 콘텐츠입니다. Instagram은 실제 계정 링크가 없습니다.
 - 이미지 제작 방식·출처·공개 범위는 저장소 자료만으로 확정할 수 없어 공개 전에 작성자의 확인이 필요합니다.
-- Vercel에 배포돼 있습니다. GitHub 저장소 연결은 아직 완료하지 않았습니다.
+- Vercel live deployment and public source: [Live Demo](https://morph-pi-peach.vercel.app) | [GitHub](https://github.com/amy175665-ship-it/morph). Deployments currently use the Vercel CLI; automatic Git deployment is not configured.
 - BrowserRouter의 직접 접근·새로고침을 위해 vercel.json에서 index.html로 rewrite합니다. 다른 플랫폼이나 하위 경로로 옮길 때는 서버 라우팅·Vite base·라우터 경로를 다시 검토해야 합니다.
 
 ## 배포
